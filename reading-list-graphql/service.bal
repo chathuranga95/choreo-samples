@@ -55,10 +55,12 @@ service graphql:Service / on new graphql:Listener(8090) {
     remote function addBook(CreateBookInput book) returns Book {
         lock {
             int id = readingList.length() + 1;
+            string[] tags = ["tag1", "tag2"];
             Book newBook = {
                 id: id,
                 title: book.title,
                 author: book.author,
+                tags: tags,
                 status: to_read
             };
             readingList.add(newBook);
@@ -114,6 +116,7 @@ public type Book record {|
     string title;
     string author;
     Status status;
+    string[] tags;
 |};
 
 # User input record for addBook GQL mutation
@@ -123,6 +126,7 @@ public type Book record {|
 public type CreateBookInput record {
     string title;
     string author;
+    string[] tags;
 };
 
 # Table for storing reading list items in memory
