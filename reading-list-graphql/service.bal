@@ -17,6 +17,12 @@
 import ballerina/graphql;
 
 # A service representing a network-accessible GraphQL API
+@graphql:ServiceConfig{
+    cors: {
+        allowOrigins: ["*"],
+        allowCredentials: true
+    }
+}
 service graphql:Service / on new graphql:Listener(8090) {
 
     # Returns all reading list items with optionally filtered from the reading status.
