@@ -2,6 +2,8 @@
 
 ## Repository File Structure
 
+// TODO: remove this test commit
+
 The below table gives a brief overview of the important files in the greeter service.\
 Note: The following file paths are relative to the path /ballerina/readling-list
 
